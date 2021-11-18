@@ -13,67 +13,87 @@ app.use(cors({
  * API
  */
 app.get('/api/getNotifications', function (req, res, next) {
-  var data = [
+  const fromAddress = 'hrAdmin@resilia.com';
+  const mgrEmailAddress = 'emma.smith@resilia.com';
+
+  var notificationsData = [
     {
         notificationId: 1,
-        notificationMesssage: 'Your request for admission has been granted',
-        notificationStatus: 'Granted',
-        user: 'John Doe',
-        requestDate: '10/10/2021',
-        requestType: 'PTO'
+        notificationFrom: fromAddress,
+        notifictionTo: 'john.doe@resilia.com',
+        notificationCC: mgrEmailAddress,
+        notificationMesssage: 'Your request for PTO has been granted',
+        notificationSubject: 'PTO Request',    
+        notificationDate: '10/10/2021',
+        notificationType: 'PTO'
     },
     {
         notificationId: 2,
-        notificationMesssage: 'Your request for admission has been denied. Contact Customer Support for further assistance.',
-        notificationStatus: 'Denied',
-        user: 'Jane Doe',
-        requestDate: '10/11/2021',
-        requestType: 'Grievance'
+        notificationFrom: fromAddress,
+        notifictionTo: 'jane.doe@resilia.com',
+        notificationCC: mgrEmailAddress,
+        notificationMesssage: 'Your request for grievance has been denied. Contact Customer Support for further assistance.',
+        notificationSubject: 'Grievance Submission',   
+        notificationDate: '10/11/2021',
+        notificationType: 'G'
     },{
         notificationId: 3,
+        notificationFrom: fromAddress,
+        notifictionTo: 'mary.doe@resilia.com',
+        notificationCC: mgrEmailAddress,
         notificationMesssage: 'Your request for admission has been partially granted.',
-        notificationStatus: 'Partially Granted',
-        user: 'Mary Doe',
-        requestDate: '10/12/2021',
-        requestType: 'LOA'
+        notificationSubject: 'Request Admission',    
+        notificationDate: '10/12/2021',
+        notificationType: 'RA'
     },{
         notificationId: 4,
-        notificationMesssage: 'Your request for admission has been put on hold. Contact customer support for a detailed explanation of next steps.',
-        notificationStatus: 'Hold',
-        user: 'Tom Doe',
-        requestDate: '10/13/2021',
-        requestType: 'JURY DUTY'
+        notificationFrom: fromAddress,
+        notifictionTo: 'tom.doe@resilia.com',
+        notificationCC: mgrEmailAddress,
+        notificationMesssage: 'Your request for Jury Duty has been put on hold. Contact customer support for a detailed explanation of next steps.',
+        notificationSubject: 'Request Jury Dury',    
+        notificationDate: '10/13/2021',
+        notificationType: 'JD'
     },{
         notificationId: 5,
-        notificationMesssage: 'Your request for admission has been granted',
-        notificationStatus: 'Granted',
-        user: 'Timothy Jones',
-        requestDate: '10/20/2021',
-        requestType: 'Grievance'
+        notificationFrom: fromAddress,
+        notifictionTo: 'timothy.jones@resilia.com',
+        notificationCC: mgrEmailAddress,
+        notificationMesssage: 'Your request for grievance has been granted',
+        notificationSubject: 'Grievance Submission',        
+        notificationDate: '10/20/2021',
+        notificationType: 'G'
     },{
         notificationId: 6,
+        notificationFrom: fromAddress,
+        notifictionTo: 'ronald.smith@resilia.com',
+        notificationCC: mgrEmailAddress,
         notificationMesssage: 'Your request for admission has been granted',
-        notificationStatus: 'Granted',
-        user: 'Ronald Smith',
-        requestDate: '10/30/2021',
-        requestType: 'PTO'
+        notificationSubject: 'Request Admission',        
+        notificationDate: '10/30/2021',
+        notificationType: 'RA'
     },{
         notificationId: 7,
+        notificationFrom: fromAddress,
+        notifictionTo: 'jackeline.moore@resilia.com',
+        notificationCC: mgrEmailAddress,
         notificationMesssage: 'Your request for admission has been partially granted',
-        notificationStatus: 'Partially Granted',
-        user: 'John Doe',
-        requestDate: '10/10/2021',
-        requestType: 'OTHER'
+        notificationSubject: 'Request Admission',    
+        notificationDate: '10/10/2021',
+        notificationType: 'RA'
     },{
         notificationId: 8,
+        notificationFrom: fromAddress,
+        notifictionTo: 'samuel.jackson@resilia.com',
+        notificationCC: mgrEmailAddress,
         notificationMesssage: 'Your request for admission has been granted',
-        notificationStatus: 'Granted',
+        notificationSubject: 'Request Admission',
         user: 'Samuel Jackson',
-        requestDate: '09/10/2021',
-        requestType: 'LOA'
+        notificationDate: '09/10/2021',
+        notificationType: 'RA'
     },
   ];
-  res.status(200).send(data);
+  res.status(200).send(notificationsData);
 });
 
 app.post('/api/', function (req, res, next) {

@@ -20,13 +20,13 @@ getNoficationsData();
 renderNotificationsData = () => {    
     let htmlTable = '';
     let row, rows = '';
-    let headerRow = `<tr><th>Notification ID</th><th>User Name</th><th>Date Requested</th><th>Request Type</th><th>Request Status</th></tr>`;
+    let headerRow = `<tr><th>Notification From</th><th>Notification To</th><th>Notification Cc</th><th>Notification Subject</th><th>Notification Message</th></tr>`;
 
     if (localStorage.getItem('notifications')) {
         const notifications = JSON.parse(localStorage.getItem('notifications') || []);
 
         for (let notification of notifications) {
-            row = `<tr><td>${notification.notificationId}</td><td>${notification.user}</td><td>${notification.requestDate}</td><td>${notification.requestType}</td><td title="${notification.notificationMesssage}">${notification.notificationStatus}</td></tr>`;
+            row = `<tr><td>${notification.notificationFrom}</td><td>${notification.notifictionTo}</td><td>${notification.notificationCC}</td><td>${notification.notificationSubject}</td><td title="Notification Type: ${notification.notificationType}">${notification.notificationMesssage}</td></tr>`;
             rows += row;
         }
         
