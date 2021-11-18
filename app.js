@@ -87,11 +87,19 @@ app.get('/api/getNotifications', function (req, res, next) {
         notifictionTo: 'samuel.jackson@resilia.com',
         notificationCC: mgrEmailAddress,
         notificationMesssage: 'Your request for admission has been granted',
-        notificationSubject: 'Request Admission',
-        user: 'Samuel Jackson',
+        notificationSubject: 'Request Admission',   
         notificationDate: '09/10/2021',
         notificationType: 'RA'
-    },
+    },{
+        notificationId: 9,
+        notificationFrom: fromAddress,
+        notifictionTo: 'srinivas.rampali@resilia.com',
+        notificationCC: mgrEmailAddress,
+        notificationMesssage: 'Your request for grievance has been granted',
+        notificationSubject: 'Grievance Submission',   
+        notificationDate: '09/25/2020',
+        notificationType: 'G'
+    }
   ];
   res.status(200).send(notificationsData);
 });

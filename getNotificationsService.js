@@ -1,4 +1,4 @@
-getNoficationsData = () => {
+getNoficationsDataFromServer = () => {
     const request = new XMLHttpRequest();
     const url = 'http://localhost:3030/api/getNotifications';
     let errMessage = 'Errors while fetching the data!';
@@ -10,12 +10,19 @@ getNoficationsData = () => {
         renderNotificationsData();
         console.log(data);
     }).catch(err => {    
-        renderNotificationsData();
         console.log(`${errMessage}: ${err}`);
     });
 };
 
-getNoficationsData();
+getNoficationsDataFromServer();
+
+getNotificationsData = () => {
+    if (!localStorage.getItem('notifications')) {
+        getNoficationsDataFromServer();
+    } else {
+        renderNotificationsData();
+    }
+}
 
 renderNotificationsData = () => {    
     let htmlTable = '';
@@ -36,3 +43,8 @@ renderNotificationsData = () => {
         document.getElementById('notifications').innerHTML = `<p>There are no notifications available</p>`;
     }
 }
+
+setInterval(() => {
+    getNotificationsData();
+}, 5000);
+
